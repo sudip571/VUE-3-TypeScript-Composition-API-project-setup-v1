@@ -7,9 +7,12 @@ import { AxiosError } from "axios";
 
 export default function errorHandling(err: any, errorModel: ErrorModel): void {
       if (err && err.response) {
-            const axiosError = err as AxiosError<Status>;
-            const errorData = (axiosError.response?.data) as Status;
-            const statusCode = axiosError.response!.status;
+            //const axiosError = err as AxiosError<Status>;
+            //const errorData = (axiosError.response?.data) as Status;
+            //const statusCode = axiosError.response!.status;
+            const errorData = err.response.data as Status;
+            console.log(errorData);
+            const statusCode = err.response.status;
 
             // unhandled exception  from back end side
             if (statusCode == ResponseStatus.EXCEPTION) {
